@@ -447,11 +447,11 @@
                 {key:'B', title:'在校成績 (B)', data: bScoresData, set: setBScoresData, fields: ['bScore'], hint: '(Name, Score)'}, 
                 {key:'C', title:'筆/面試成績 (C)', data: cScoresData, set: setCScoresData, fields: ['cScore'], hint: '(Name, P2)'}].map(section => (
                 <div key={section.key} className="bg-white rounded border border-gray-300 shadow-sm p-6 transition-all hover:shadow-md">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-                        <div className="flex items-baseline gap-2"><h2 className="text-lg font-bold text-gray-800">{section.title}</h2><span className="text-xs text-gray-500 font-medium">{section.hint}</span></div>
-                        <div className="flex items-center mt-4 md:mt-0">
-                            <input type="file" accept=".csv" onChange={(e) => handleFileUpload(e, section.key)} className="text-sm text-gray-600" />
-                            <button onClick={() => handleExportCSV(section.data, section.key)} className="ml-2 px-3 py-1 text-sm font-medium text-gray-600 border border-gray-400 rounded hover:bg-gray-50 transition-colors">匯出 CSV</button>
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                        <div className="flex items-baseline gap-2 shrink-0"><h2 className="text-lg font-bold text-gray-800">{section.title}</h2><span className="text-xs text-gray-500 font-medium">{section.hint}</span></div>
+                        <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-end">
+                            <input type="file" accept=".csv" onChange={(e) => handleFileUpload(e, section.key)} className="text-sm text-gray-600 w-full sm:w-auto" />
+                            <button onClick={() => handleExportCSV(section.data, section.key)} className="px-3 py-1 text-sm font-medium text-gray-600 border border-gray-400 rounded hover:bg-gray-50 transition-colors whitespace-nowrap shrink-0">匯出 CSV</button>
                         </div>
                     </div>
                     <div className="overflow-x-auto">
@@ -485,21 +485,21 @@
               <div className="flex justify-center pt-4"><button onClick={clearAllData} className="px-8 py-2 text-sm font-medium text-red-500 border border-red-300 rounded hover:bg-red-50 transition-colors">清除所有資料</button></div>
 
               <div className="bg-white rounded border border-gray-300 shadow-sm p-8 space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                    <div className="text-center md:text-left font-bold text-gray-800 border-l-4 border-gray-600 pl-3">書審成績 x 在校成績<br/>(AB)</div>
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
+                    <div className="text-center lg:text-left font-bold text-gray-800 border-l-4 border-gray-600 pl-3">書審成績 x 在校成績<br/>(AB)</div>
                     <button onClick={() => handleCalculateCorrelation('AB')} className="h-12 w-full bg-gray-800 text-white text-sm font-bold tracking-wide rounded border-2 border-gray-900 hover:bg-gray-900 transition-all shadow-sm">計算相關係數</button>
                     <button onClick={() => handleGenerateReport('AB_RAW')} className="h-12 w-full bg-white border-2 border-gray-400 text-gray-700 text-sm font-bold tracking-wide rounded hover:bg-gray-50 hover:border-gray-600 transition-all">報告：原始分數</button>
                     <button onClick={() => handleGenerateReport('AB_PROP')} className="h-12 w-full bg-gray-100 border-2 border-gray-400 text-gray-700 text-sm font-bold tracking-wide rounded hover:bg-gray-200 hover:border-gray-600 transition-all">報告：比例分數</button>
                 </div>
                 <div className="h-px bg-gray-200 w-full"></div>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                    <div className="text-center md:text-left font-bold text-gray-800 border-l-4 border-gray-500 pl-3">在校成績 x 筆／面試成績<br/>(BC)</div>
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
+                    <div className="text-center lg:text-left font-bold text-gray-800 border-l-4 border-gray-500 pl-3">在校成績 x 筆／面試成績<br/>(BC)</div>
                     <button onClick={() => handleCalculateCorrelation('BC')} className="h-12 w-full bg-gray-800 text-white text-sm font-bold tracking-wide rounded border-2 border-gray-900 hover:bg-gray-900 transition-all shadow-sm">計算相關係數</button>
-                    <div className="md:col-span-2"><button onClick={() => handleGenerateReport('BC')} className="h-12 w-full bg-white border-2 border-gray-400 text-gray-700 text-sm font-bold tracking-wide rounded hover:bg-gray-50 hover:border-gray-600 transition-all">報告：原始分數</button></div>
+                    <div className="lg:col-span-2"><button onClick={() => handleGenerateReport('BC')} className="h-12 w-full bg-white border-2 border-gray-400 text-gray-700 text-sm font-bold tracking-wide rounded hover:bg-gray-50 hover:border-gray-600 transition-all">報告：原始分數</button></div>
                 </div>
                 <div className="h-px bg-gray-200 w-full"></div>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                    <div className="text-center md:text-left font-bold text-gray-800 border-l-4 border-gray-900 pl-3">書審 x 在校 x 筆／面試<br/>(ABC)</div>
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
+                    <div className="text-center lg:text-left font-bold text-gray-800 border-l-4 border-gray-900 pl-3">書審 x 在校 x 筆／面試<br/>(ABC)</div>
                     <button onClick={() => handleCalculateCorrelation('ABC')} className="h-12 w-full bg-gray-800 text-white text-sm font-bold tracking-wide rounded border-2 border-gray-900 hover:bg-gray-900 transition-all shadow-sm">計算相關係數</button>
                     <button onClick={() => handleGenerateReport('ABC_RAW')} className="h-12 w-full bg-white border-2 border-gray-400 text-gray-700 text-sm font-bold tracking-wide rounded hover:bg-gray-50 hover:border-gray-600 transition-all">報告：原始分數</button>
                     <button onClick={() => handleGenerateReport('ABC_PROP')} className="h-12 w-full bg-gray-100 border-2 border-gray-400 text-gray-700 text-sm font-bold tracking-wide rounded hover:bg-gray-200 hover:border-gray-600 transition-all">報告：比例分數</button>
@@ -617,7 +617,7 @@
               )}
 
               <footer className="text-center py-8 text-xs text-gray-400 font-medium">
-                <p className="mb-2">最後更新時間：2025年11月24日 上午11:05 (CST)</p>
+                <p className="mb-2">最後更新時間：2025年11月24日 下午12:22 (CST)</p>
                 <p>Copyright © 2025 Hzwei 版權所有 All Rights Reserved</p>
               </footer>
             </div>
